@@ -1,5 +1,4 @@
-<!-- All page CSS: design tokens, layout shell, per-component styles, and responsive breakpoints. -->
-<style>:root{
+:root{
   --blue:#0348D1;
   --blue-dark:#0040C1;
   --blue-50:#F9FCFF;
@@ -638,4 +637,3 @@ html.is-embedded .toc-group{margin-bottom:10px;}
   html.is-embedded body{padding-top:85px;}
   html.is-embedded .app-shell{padding-top:0;}
 }
-</style>
