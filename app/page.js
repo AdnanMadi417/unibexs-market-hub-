@@ -19,12 +19,16 @@ export default function Home() {
   return (
     <>
       <FlagSprite />
-      <SkipTocToggle />
-      {/* Mobile only (see globals.css / ClientScripts): JS relocates the TOC
-          toggle + sidebar nav into this slot. It sits right after the search
-          box, at the very top of the page, so the nav is visible immediately
-          on a phone instead of being buried below the whole hero section. */}
-      <div id="mobileTocSlot" />
+      {/* Mobile only (see .mobile-top-bar in globals.css): sticks the search
+          box + TOC toggle to the top of the viewport while scrolling, instead
+          of letting them scroll away with the rest of the page. JS relocates
+          the TOC toggle + sidebar nav into #mobileTocSlot, right after the
+          search box, so the nav is visible immediately on a phone instead of
+          being buried below the whole hero section. */}
+      <div className="mobile-top-bar">
+        <SkipTocToggle />
+        <div id="mobileTocSlot" />
+      </div>
       <div className="app-shell">
         <Sidebar />
         <div className="content">
