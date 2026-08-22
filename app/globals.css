@@ -419,7 +419,6 @@ footer{border-top:1px solid var(--border-gray);padding:40px 0 24px;margin-top:24
   table { font-size: 12.5px; min-width: 400px; }
   .col-region { display: none; }
   thead th, tbody td { padding: 10px 12px; }
-  .sidebar { padding: 20px 16px; }
 }
 
 /* Very small phones */
