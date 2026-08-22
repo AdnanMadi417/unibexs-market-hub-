@@ -5,6 +5,9 @@
 /.next/
 /out/
 
+# Vercel
+/.vercel
+
 # Misc
 .DS_Store
 *.pem
