@@ -76,19 +76,22 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 .text-link:hover{text-decoration:underline;}
 
 /* ===== Layout shell: sidebar + content ===== */
-.app-shell{display:flex;align-items:flex-start;min-height:100vh;min-width:0;}
+.app-shell{display:flex;flex-direction:column;align-items:stretch;min-height:100vh;min-width:0;}
 
+/* Desktop/tablet: horizontal navbar, always visible (no collapse — that's
+   mobile-only, see .toc-toggle below). Sticky to the top of the viewport,
+   same as .mobile-top-bar. */
 .sidebar{
-  width:var(--sidebar-w);
-  flex:0 0 var(--sidebar-w);
-  position:sticky;top:0;
-  height:100vh;
-  overflow-y:auto;
-  border-right:1px solid var(--border-gray);
-  padding:20px 16px;
+  width:100%;
+  position:sticky;top:0;z-index:70;
+  height:auto;
+  overflow:visible;
+  border-right:none;border-bottom:1px solid var(--border-gray);
+  padding:12px 24px;
   background:var(--white);
+  display:flex;flex-wrap:wrap;align-items:center;gap:2px 4px;
 }
-.sidebar-search{position:relative;margin-bottom:16px;}
+.sidebar-search{position:relative;margin-bottom:0;margin-left:auto;flex:0 0 auto;width:200px;}
 .sidebar-search input{
   width:100%;padding:8px 34px 8px 12px;border-radius:var(--radius-pill);
   border:1px solid var(--border-gray);background:var(--blue-50);
@@ -96,22 +99,25 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 }
 .sidebar-search input:focus{outline:2px solid var(--blue-400);}
 .sidebar-search .icn{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:14px;pointer-events:none;}
-.toc-group{margin-bottom:14px;}
-.toc-group-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gray);margin:0 0 6px 10px;}
+/* Group wrapper/label only matter for mobile's vertical list (see media
+   query below) — on the horizontal navbar every link just flows in one row. */
+.toc-group{display:contents;}
+.toc-group-label{display:none;}
 .toc-link{
   display:block;padding:7px 12px;border-radius:var(--radius-sm);
   font-size:13.5px;font-weight:500;color:var(--near-black);
-  margin-bottom:1px;border:1px solid transparent;
-  line-height:1.3;
+  border:1px solid transparent;
+  line-height:1.3;white-space:nowrap;
 }
 .toc-link:hover{background:var(--blue-50);}
 .toc-link.active{background:var(--blue-200);color:var(--blue);font-weight:600;}
 .toc-link.hidden-by-search{display:none;}
 
 .content{
-  flex:1;min-width:0;
+  flex:1;min-width:0;width:100%;
   padding:48px 56px 80px;
   max-width:1000px;
+  margin:0 auto;
 }
 
 /* Mobile TOC dropdown toggle — hidden on desktop/tablet, where the sidebar
@@ -128,14 +134,23 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 
 @media (max-width:1199px){
   .toc-toggle{display:flex;}
-  .app-shell{flex-direction:column;}
+  /* Below this width the sidebar becomes the collapsible dropdown living
+     inside .mobile-top-bar (which is already sticky) — so it reverts to a
+     plain vertical list instead of the desktop horizontal navbar row, and
+     doesn't need its own position:sticky/z-index. */
   .sidebar{
-    width:100%;flex:none;position:relative;height:auto;
+    width:100%;position:relative;top:auto;z-index:auto;height:auto;
     border-right:none;border-bottom:1px solid var(--border-gray);
-    max-height:0;overflow:hidden;padding:0 20px;transition:max-height .25s ease,padding .25s ease;
+    max-height:0;overflow:hidden;padding:0 20px;
+    display:block;
+    transition:max-height .25s ease,padding .25s ease;
   }
   .sidebar.open{max-height:1200px;padding:20px;}
-  .content{padding:28px 20px 56px;max-width:100%;}
+  .sidebar-search{margin-left:0;width:auto;}
+  .toc-group{display:block;margin-bottom:14px;}
+  .toc-group-label{display:block;}
+  .toc-link{margin-bottom:1px;}
+  .content{padding:28px 20px 56px;max-width:100%;margin:0;}
 }
 
 /* Report header (plain article style, no gradient) */
@@ -622,7 +637,7 @@ input:focus-visible,
    real content in that constrained viewport before scrolling.
    =================================================================== */
 html.is-embedded .app-shell{padding-top:85px;}
-html.is-embedded .sidebar{top:85px;height:calc(100vh - 85px);}
+html.is-embedded .sidebar{top:85px;}
 html.is-embedded .content{padding-top:24px;}
 html.is-embedded .report-header{padding-bottom:0;}
 html.is-embedded .report-sub{margin-top:10px;}
