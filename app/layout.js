@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Unibexs — Malaysia International Student Market Report',
+  title: 'Unibexs — Market Intelligence Hub',
   description:
     'Free market report for education partners: comprehensive analysis of international student applications to Malaysian universities, 2022-2026, sourced from EMGS, MoHE, and QS.',
 };

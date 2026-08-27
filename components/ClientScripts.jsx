@@ -378,78 +378,36 @@ export default function ClientScripts() {
       });
     } catch (e) { console.error('[all countries explorer] failed:', e); }
 
-    /* ===== Sidebar TOC active-link highlight on scroll ===== */
+    /* ===== Navbar tabs (Statistics / Market Intel) =====
+       Shows exactly one tab-panel at a time. Panels start in the DOM either
+       way (nothing unmounts), so a panel's charts/sliders are already
+       initialized below — switching just toggles `hidden` and fires a
+       resize event so anything that measured itself while hidden (a
+       horizontal slider's scrollWidth, a chart's canvas box) recomputes
+       against its now-real dimensions. */
     try {
-      const tocLinks = document.querySelectorAll('.toc-link');
-      const tocSections = [...tocLinks].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = '#' + entry.target.id;
-            tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-          }
+      const tabButtons = document.querySelectorAll('.navbar-tab');
+      const onTabClick = (btn) => () => {
+        const target = btn.dataset.tab;
+        tabButtons.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-selected', active ? 'true' : 'false');
         });
-      }, { rootMargin: '-40% 0px -50% 0px' });
-      tocSections.forEach(s => observer.observe(s));
-      cleanups.push(() => observer.disconnect());
-    } catch (e) { console.error('[sidebar toc scrollspy] failed:', e); }
-
-    /* ===== Mobile TOC dropdown toggle + mobile layout reflow =====
-       On phones (<=1199px) the search box relocates to a slot at the very
-       top of the page, and the TOC toggle+list relocate to a slot above the
-       Annual Overview section. Desktop/tablet keep the original sticky
-       left-sidebar layout untouched — nodes are only moved, never cloned, so
-       all existing listeners (search, scrollspy) keep working automatically. */
-    try {
-      const tocToggle = document.getElementById('tocToggle');
-      const sidebarNav = document.getElementById('sidebarNav');
-      const searchBox = document.querySelector('.sidebar-search');
-      const mobileSearchSlot = document.getElementById('mobileSearchSlot');
-      const mobileTocSlot = document.getElementById('mobileTocSlot');
-
-      const onTocToggleClick = () => {
-        const isOpen = sidebarNav.classList.toggle('open');
-        tocToggle.classList.toggle('open', isOpen);
-        tocToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+          panel.hidden = panel.id !== `tab-${target}`;
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       };
-      tocToggle.addEventListener('click', onTocToggleClick);
-
-      const onTocLinkClick = () => {
-        sidebarNav.classList.remove('open');
-        tocToggle.classList.remove('open');
-        tocToggle.setAttribute('aria-expanded', 'false');
-      };
-      document.querySelectorAll('.toc-link').forEach(l => l.addEventListener('click', onTocLinkClick));
-
-      let mq;
-      let applyLayout;
-      if (searchBox && mobileSearchSlot && mobileTocSlot) {
-        const searchHome = { parent: searchBox.parentNode, next: searchBox.nextSibling };
-        const toggleHome = { parent: tocToggle.parentNode, next: tocToggle.nextSibling };
-        const sidebarHome = { parent: sidebarNav.parentNode, next: sidebarNav.nextSibling };
-
-        function layoutMobile() {
-          mobileSearchSlot.appendChild(searchBox);
-          mobileTocSlot.appendChild(tocToggle);
-          mobileTocSlot.appendChild(sidebarNav);
-        }
-        function layoutDesktop() {
-          searchHome.parent.insertBefore(searchBox, searchHome.next);
-          toggleHome.parent.insertBefore(tocToggle, toggleHome.next);
-          sidebarHome.parent.insertBefore(sidebarNav, sidebarHome.next);
-        }
-        mq = window.matchMedia('(max-width: 1199px)');
-        applyLayout = (e) => { if (e.matches) layoutMobile(); else layoutDesktop(); };
-        applyLayout(mq);
-        mq.addEventListener('change', applyLayout);
-      }
-
-      cleanups.push(() => {
-        tocToggle.removeEventListener('click', onTocToggleClick);
-        document.querySelectorAll('.toc-link').forEach(l => l.removeEventListener('click', onTocLinkClick));
-        if (mq) mq.removeEventListener('change', applyLayout);
+      const tabHandlers = [];
+      tabButtons.forEach(btn => {
+        const handler = onTabClick(btn);
+        tabHandlers.push([btn, handler]);
+        btn.addEventListener('click', handler);
       });
-    } catch (e) { console.error('[mobile toc toggle] failed:', e); }
+      cleanups.push(() => tabHandlers.forEach(([btn, handler]) => btn.removeEventListener('click', handler)));
+    } catch (e) { console.error('[navbar tabs] failed:', e); }
 
     /* ===== Table scroll affordance (mobile) ===== */
     try {
@@ -588,102 +546,6 @@ export default function ClientScripts() {
         cleanups.push(() => tabHandlers.forEach(([tab, handler]) => tab.removeEventListener('click', handler)));
       }
     } catch (e) { console.error('[year tabs] failed:', e); }
-
-    /* ===== Real in-page content search ===== */
-    try {
-      const tocSearch = document.getElementById('tocSearch');
-      const tocLinksForSearch = document.querySelectorAll('.toc-link');
-      const mainEl = document.querySelector('main');
-      let lastMarks = [];
-      let lastMatchIndex = -1;
-
-      function clearHighlights() {
-        lastMarks.forEach(mark => {
-          const parent = mark.parentNode;
-          if (!parent) return;
-          parent.replaceChild(document.createTextNode(mark.textContent), mark);
-          parent.normalize();
-        });
-        lastMarks = [];
-        lastMatchIndex = -1;
-      }
-
-      function highlightMatches(query) {
-        clearHighlights();
-        if (!query || query.length < 2) return;
-        const q = query.toLowerCase();
-        const walker = document.createTreeWalker(mainEl, NodeFilter.SHOW_TEXT, {
-          acceptNode(node) {
-            if (!node.nodeValue || !node.nodeValue.toLowerCase().includes(q)) return NodeFilter.FILTER_REJECT;
-            const tag = node.parentNode && node.parentNode.tagName;
-            if (tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
-            return NodeFilter.FILTER_ACCEPT;
-          }
-        });
-        const textNodes = [];
-        let n;
-        while ((n = walker.nextNode())) textNodes.push(n);
-
-        textNodes.forEach(node => {
-          const text = node.nodeValue;
-          const lower = text.toLowerCase();
-          const frag = document.createDocumentFragment();
-          let cursor = 0;
-          let idx = lower.indexOf(q);
-          if (idx === -1) return;
-          while (idx !== -1) {
-            frag.appendChild(document.createTextNode(text.slice(cursor, idx)));
-            const mark = document.createElement('mark');
-            mark.className = 'search-hit';
-            mark.textContent = text.slice(idx, idx + q.length);
-            frag.appendChild(mark);
-            lastMarks.push(mark);
-            cursor = idx + q.length;
-            idx = lower.indexOf(q, cursor);
-          }
-          frag.appendChild(document.createTextNode(text.slice(cursor)));
-          node.parentNode.replaceChild(frag, node);
-        });
-
-        if (lastMarks.length) {
-          lastMatchIndex = 0;
-          lastMarks[0].classList.add('search-hit-active');
-          lastMarks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-
-      let searchDebounce;
-      const onSearchInput = () => {
-        const q = tocSearch.value.trim().toLowerCase();
-        tocLinksForSearch.forEach(l => {
-          const match = !q || l.textContent.toLowerCase().includes(q);
-          l.classList.toggle('hidden-by-search', !match);
-        });
-        clearTimeout(searchDebounce);
-        searchDebounce = setTimeout(() => highlightMatches(tocSearch.value.trim()), 250);
-      };
-      tocSearch.addEventListener('input', onSearchInput);
-
-      const onSearchKeydown = (e) => {
-        if (e.key === 'Enter' && lastMarks.length > 1) {
-          lastMarks[lastMatchIndex].classList.remove('search-hit-active');
-          lastMatchIndex = (lastMatchIndex + 1) % lastMarks.length;
-          lastMarks[lastMatchIndex].classList.add('search-hit-active');
-          lastMarks[lastMatchIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else if (e.key === 'Escape') {
-          tocSearch.value = '';
-          clearHighlights();
-          tocLinksForSearch.forEach(l => l.classList.remove('hidden-by-search'));
-        }
-      };
-      tocSearch.addEventListener('keydown', onSearchKeydown);
-
-      cleanups.push(() => {
-        clearTimeout(searchDebounce);
-        tocSearch.removeEventListener('input', onSearchInput);
-        tocSearch.removeEventListener('keydown', onSearchKeydown);
-      });
-    } catch (e) { console.error('[page content search] failed:', e); }
 
     return () => cleanups.forEach(fn => fn());
   }, []);
