@@ -77,9 +77,9 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 /* ===== Layout shell: navbar + content ===== */
 .app-shell{display:flex;flex-direction:column;align-items:stretch;min-height:100vh;min-width:0;}
 
-/* Top navbar: page title + the two main tabs. Only two items, so unlike the
-   old multi-link sidebar this needs no collapse/accordion at any screen
-   size — it just wraps if the window is narrow. Sticky to the viewport top. */
+/* Top navbar: just the two main tabs. Only two items, so unlike the old
+   multi-link sidebar this needs no collapse/accordion at any screen size —
+   it just wraps if the window is narrow. Sticky to the viewport top. */
 .top-navbar{
   position:sticky;top:0;z-index:70;
   display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;
@@ -87,8 +87,7 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
   border-bottom:1px solid var(--border-gray);
   background:var(--white);
 }
-.navbar-title{font-size:15px;font-weight:700;color:var(--near-black);white-space:nowrap;}
-.navbar-tabs{display:flex;gap:4px;margin-left:auto;}
+.navbar-tabs{display:flex;gap:4px;}
 .navbar-tab{
   padding:8px 18px;border-radius:var(--radius-pill);border:1px solid transparent;
   font-size:13.5px;font-weight:600;color:var(--gray);
@@ -107,7 +106,6 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 
 @media (max-width:640px){
   .top-navbar{padding:12px 18px;gap:6px 12px;}
-  .navbar-title{font-size:14px;}
   .navbar-tab{padding:7px 14px;font-size:13px;}
 }
 

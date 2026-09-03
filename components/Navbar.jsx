@@ -1,8 +1,7 @@
-// Top navbar: page title + the two main tabs (Statistics / Market Intel). Tab switching is handled by ClientScripts.
+// Top navbar: the two main tabs (Statistics / Market Intel). Tab switching is handled by ClientScripts.
 export default function Navbar() {
   return (
     <nav className="top-navbar">
-      <div className="navbar-title">Market Intelligence Hub</div>
       <div className="navbar-tabs" role="tablist">
         <button
           className="navbar-tab active"
