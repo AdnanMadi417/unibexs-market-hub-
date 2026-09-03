@@ -538,7 +538,7 @@ input:focus-visible,
   pointer-events:none;
 }
 .cta-wordmark{
-  display:block;height:24px;width:auto;margin:0 auto 22px;
+  display:block;height:40px;width:auto;margin:0 auto 22px;
 }
 .cta-headline{
   font-size:clamp(24px,4vw,36px);font-weight:600;line-height:1.25;color:var(--white);
