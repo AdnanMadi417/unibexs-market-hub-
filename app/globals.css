@@ -79,13 +79,19 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 
 /* Top navbar: just the two main tabs. Only two items, so unlike the old
    multi-link sidebar this needs no collapse/accordion at any screen size —
-   it just wraps if the window is narrow. Sticky to the viewport top. */
+   it just wraps if the window is narrow. Sticky to the viewport top.
+   .top-navbar itself spans full width (background/border edge-to-edge);
+   .navbar-inner mirrors .content's max-width/padding so the tabs line up
+   with the page's text column instead of sitting flush at the edge. */
 .top-navbar{
   position:sticky;top:0;z-index:70;
-  display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;
-  padding:14px 24px;
   border-bottom:1px solid var(--border-gray);
   background:var(--white);
+}
+.navbar-inner{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;
+  width:100%;max-width:1000px;margin:0 auto;
+  padding:14px 56px;
 }
 .navbar-tabs{display:flex;gap:4px;}
 .navbar-tab{
@@ -105,7 +111,7 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 }
 
 @media (max-width:640px){
-  .top-navbar{padding:12px 18px;gap:6px 12px;}
+  .navbar-inner{max-width:100%;padding:12px 18px;gap:6px 12px;}
   .navbar-tab{padding:7px 14px;font-size:13px;}
 }
 
@@ -566,7 +572,8 @@ input:focus-visible,
    gap for the embed's external header goes on body (not .app-shell) — it
    needs to sit above the navbar too, not just above the content column. */
 html.is-embedded body{padding-top:85px;}
-html.is-embedded .top-navbar{top:85px;padding:14px 14px;}
+html.is-embedded .top-navbar{top:85px;}
+html.is-embedded .navbar-inner{padding:14px 14px;}
 html.is-embedded .content{padding-top:24px;}
 html.is-embedded .report-header{padding-bottom:0;}
 html.is-embedded .report-sub{margin-top:10px;}
