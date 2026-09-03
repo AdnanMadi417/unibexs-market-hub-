@@ -1,5 +1,138 @@
-import PartialHtml from './PartialHtml';
-
+// "Why Unibexs" section — partner value proposition and value-list.
+// WHY UNIBEXS / PARTNER (info only, no CTA button)
 export default function SectionPartner() {
-  return <PartialHtml file="section-partner.html" />;
+  return (
+    <section className="section" id="partner">
+      <div className="section-head">
+        <div className="section-kicker">Why Unibexs</div>
+        <h2 className="heading-lg">
+          Recruit More Students to Malaysia.
+          <span className="accent-blue">
+            Unibexs Runs Everything Behind Them.
+          </span>
+        </h2>
+        <p className="text-body">
+          The markets in this report are growing fast — but capturing them
+          requires university access, verified program data, application
+          tracking, and on-ground support in Malaysia. That is exactly what the
+          Unibexs System gives you.
+        </p>
+      </div>
+      <ul className="value-list">
+        <li>
+          <span className="value-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Access 2,000+ Malaysian university courses from one system
+        </li>
+        <li>
+          <span className="value-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Transparent commissions up to MYR 10,000+ per eligible student
+        </li>
+        <li>
+          <span className="value-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Stage-by-stage application tracking — no more chasing updates
+        </li>
+        <li>
+          <span className="value-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Dedicated account manager and in-Malaysia logistics marketplace
+        </li>
+        <li>
+          <span className="value-icon">
+            <svg
+              viewBox="0 0 24 24"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          Your students stay yours — protected by the Non-Compete Covenant
+        </li>
+      </ul>
+      <div className="card-tint mt-24">
+        <h3 className="heading-sm">2026 Data — Q1 Available</h3>
+        <p className="text-body mt-16">
+          EMGS publishes data quarterly. As of July 2026, Q1 2026
+          (January–March) data is available on the official EMGS dashboard. The
+          Q1 2026 chart shows regional distribution with East Asia continuing to
+          lead, followed by South Asia and MENA. Full-year 2026 data will be
+          published in early 2027.
+        </p>
+        <div className="note-links mt-24">
+          <a
+            className="text-link"
+            href="https://educationmalaysia.gov.my"
+            target="_blank"
+            rel="noopener"
+          >
+            View Live EMGS Dashboard →
+          </a>
+          <a
+            className="text-link"
+            href="https://educationmalaysia.gov.my"
+            target="_blank"
+            rel="noopener"
+          >
+            Download EMGS 2025 Annual Highlights PDF →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
