@@ -79,12 +79,12 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 
 /* Top navbar: just the two main tabs. Only two items, so unlike the old
    multi-link sidebar this needs no collapse/accordion at any screen size —
-   it just wraps if the window is narrow. Sticky to the viewport top.
-   .top-navbar itself spans full width (background/border edge-to-edge);
-   .navbar-inner mirrors .content's max-width/padding so the tabs line up
-   with the page's text column instead of sitting flush at the edge. */
+   it just wraps if the window is narrow. Scrolls away with the page (not
+   sticky) — .top-navbar itself spans full width (background/border
+   edge-to-edge); .navbar-inner mirrors .content's max-width/padding so the
+   tabs line up with the page's text column instead of sitting flush at
+   the edge. */
 .top-navbar{
-  position:sticky;top:0;z-index:70;
   border-bottom:1px solid var(--border-gray);
   background:var(--white);
 }
@@ -572,7 +572,6 @@ input:focus-visible,
    gap for the embed's external header goes on body (not .app-shell) — it
    needs to sit above the navbar too, not just above the content column. */
 html.is-embedded body{padding-top:85px;}
-html.is-embedded .top-navbar{top:85px;}
 html.is-embedded .navbar-inner{padding:14px 14px;}
 html.is-embedded .content{padding-top:24px;}
 html.is-embedded .report-header{padding-bottom:0;}
