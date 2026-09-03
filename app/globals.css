@@ -534,8 +534,7 @@ input:focus-visible,
   pointer-events:none;
 }
 .cta-wordmark{
-  font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,0.85);margin-bottom:22px;
+  display:block;height:24px;width:auto;margin:0 auto 22px;
 }
 .cta-headline{
   font-size:clamp(24px,4vw,36px);font-weight:600;line-height:1.25;color:var(--white);
