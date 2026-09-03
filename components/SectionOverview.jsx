@@ -5,8 +5,7 @@ export default function SectionOverview() {
       <div className="section-head">
         <div className="section-kicker">Annual Overview</div>
         <h2 className="heading-lg">
-          Growth trajectory
-          <span className="accent-blue">at a glance</span>
+          Growth trajectory <span className="accent-blue">at a glance</span>
         </h2>
         <p className="text-body">
           Malaysia's international student applications have grown steadily
@@ -40,7 +39,7 @@ export default function SectionOverview() {
             <span className="delta up">
               <svg viewBox="0 0 12 12" width="9" height="9" fill="currentColor">
                 <path d="M6 1.5 10.5 9h-9z" />
-              </svg>
+              </svg>{" "}
               +16.5% YoY
             </span>
           </div>

@@ -5,7 +5,7 @@ export default function SectionTrends() {
       <div className="section-head">
         <div className="section-kicker">Trends</div>
         <h2 className="heading-lg">
-          Multi-year
+          Multi-year{" "}
           <span className="accent-blue">country & study-level trends</span>
         </h2>
       </div>

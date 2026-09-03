@@ -21,8 +21,8 @@ export default function Footer() {
               rel="noopener"
             >
               educationmalaysia.gov.my
-            </a>
-            ·
+            </a>{" "}
+            ·{" "}
             <a
               className="text-link"
               href="https://www.mohe.gov.my/en/download/statistics"

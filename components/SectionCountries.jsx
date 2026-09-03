@@ -5,8 +5,7 @@ export default function SectionCountries() {
       <div className="section-head">
         <div className="section-kicker">By Country</div>
         <h2 className="heading-lg">
-          Top source countries
-          <span className="accent-blue">— 2025</span>
+          Top source countries <span className="accent-blue">— 2025</span>
         </h2>
         <p className="text-body">
           The 12 largest source markets by application volume, with

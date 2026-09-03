@@ -6,7 +6,7 @@ export default function SectionMarket() {
         <div className="section-head">
           <div className="section-kicker">Market Intel</div>
           <h2 className="heading-lg">
-            Where to focus your
+            Where to focus your{" "}
             <span className="accent-blue">recruitment in 2026</span>
           </h2>
           <p className="text-body">

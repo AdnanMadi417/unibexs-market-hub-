@@ -11,7 +11,7 @@ export default function CtaBanner() {
         height="187"
       />
       <h2 className="cta-headline">
-        You Bring the Students.
+        You Bring the Students.{" "}
         <span style={{ opacity: ".85" }}>
           Unibexs Runs Everything Behind Them.
         </span>
@@ -28,7 +28,7 @@ export default function CtaBanner() {
         target="_blank"
         rel="noopener"
       >
-        Become an Advisor
+        Become an Advisor{" "}
         <svg
           viewBox="0 0 24 24"
           width="14"

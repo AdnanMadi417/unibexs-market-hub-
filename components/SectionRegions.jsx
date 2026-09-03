@@ -5,8 +5,7 @@ export default function SectionRegions() {
       <div className="section-head">
         <div className="section-kicker">By Region</div>
         <h2 className="heading-lg">
-          Regional distribution
-          <span className="accent-blue">— 2025</span>
+          Regional distribution <span className="accent-blue">— 2025</span>
         </h2>
         <p className="text-body">
           East Asia and South Asia remain the two largest source regions, while

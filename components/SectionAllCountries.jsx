@@ -5,7 +5,7 @@ export default function SectionAllCountries() {
       <div className="section-head">
         <div className="section-kicker">Deep Dive</div>
         <h2 className="heading-lg">
-          All Countries
+          All Countries{" "}
           <span className="accent-blue">— Deep Dive Analysis</span>
         </h2>
         <p className="text-body">
@@ -76,7 +76,7 @@ export default function SectionAllCountries() {
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
+            </svg>{" "}
             Export as CSV
           </button>
         </div>
@@ -111,38 +111,35 @@ export default function SectionAllCountries() {
           <div className="howto-item">
             <span className="dot" />
             <span>
-              <b>Search:</b>
-              Find any country by name or flag emoji
+              <b>Search:</b> Find any country by name or flag emoji
             </span>
           </div>
           <div className="howto-item">
             <span className="dot" />
             <span>
-              <b>Filter by Region:</b>
-              Compare markets within East Asia, South Asia, Africa, Middle East,
-              Central Asia, Southeast Asia
+              <b>Filter by Region:</b> Compare markets within East Asia, South
+              Asia, Africa, Middle East, Central Asia, Southeast Asia
             </span>
           </div>
           <div className="howto-item">
             <span className="dot" />
             <span>
-              <b>Sort by Growth:</b>
-              Identify emerging markets with highest YoY growth rates
+              <b>Sort by Growth:</b> Identify emerging markets with highest YoY
+              growth rates
             </span>
           </div>
           <div className="howto-item">
             <span className="dot" />
             <span>
-              <b>Export CSV:</b>
-              Download filtered data for further analysis in Excel or your CRM
+              <b>Export CSV:</b> Download filtered data for further analysis in
+              Excel or your CRM
             </span>
           </div>
           <div className="howto-item">
             <span className="dot" />
             <span>
-              <b>4-Year Trend:</b>
-              See each country's trajectory from 2022 to 2025 for market
-              maturity assessment
+              <b>4-Year Trend:</b> See each country's trajectory from 2022 to
+              2025 for market maturity assessment
             </span>
           </div>
         </div>

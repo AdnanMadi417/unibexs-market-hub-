@@ -5,8 +5,7 @@ export default function SectionSources() {
       <div className="section-head">
         <div className="section-kicker">Data Sources</div>
         <h2 className="heading-lg">
-          Official
-          <span className="accent-blue">data sources</span>
+          Official <span className="accent-blue">data sources</span>
         </h2>
         <p className="text-body">
           All data in this report is sourced exclusively from official

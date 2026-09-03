@@ -3,8 +3,7 @@ export default function HeaderHero() {
   return (
     <header className="report-header" id="overview-top">
       <div className="report-meta-badge">
-        Data as of
-        <b id="heroYearLabel">Q1 2026</b>· EMGS Official
+        Data as of <b id="heroYearLabel">Q1 2026</b> · EMGS Official
       </div>
       <h1 className="heading-xl mt-16">Market Intelligence Hub</h1>
       <p className="report-sub">
@@ -25,7 +24,7 @@ export default function HeaderHero() {
           target="_blank"
           rel="noopener"
         >
-          Apply to Become an Advisor
+          Apply to Become an Advisor{" "}
           <svg
             viewBox="0 0 24 24"
             width="14"
@@ -55,8 +54,7 @@ export default function HeaderHero() {
           2025
         </div>
         <div className="year-tab" data-year="2026">
-          2026
-          <small>Q1 only</small>
+          2026 <small>Q1 only</small>
         </div>
       </div>
       <div className="stat-grid">

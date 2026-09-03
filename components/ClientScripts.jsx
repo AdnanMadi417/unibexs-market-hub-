@@ -601,43 +601,6 @@ export default function ClientScripts() {
       console.error("[all countries explorer] failed:", e);
     }
 
-    /* ===== Navbar tabs (Statistics / Market Intel) =====
-       Shows exactly one tab-panel at a time. Panels start in the DOM either
-       way (nothing unmounts), so a panel's charts/sliders are already
-       initialized below — switching just toggles `hidden` and fires a
-       resize event so anything that measured itself while hidden (a
-       horizontal slider's scrollWidth, a chart's canvas box) recomputes
-       against its now-real dimensions. */
-    try {
-      const tabButtons = document.querySelectorAll(".navbar-tab");
-      const onTabClick = (btn) => () => {
-        const target = btn.dataset.tab;
-        tabButtons.forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle("active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        document.querySelectorAll(".tab-panel").forEach((panel) => {
-          panel.hidden = panel.id !== `tab-${target}`;
-        });
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-      };
-      const tabHandlers = [];
-      tabButtons.forEach((btn) => {
-        const handler = onTabClick(btn);
-        tabHandlers.push([btn, handler]);
-        btn.addEventListener("click", handler);
-      });
-      cleanups.push(() =>
-        tabHandlers.forEach(([btn, handler]) =>
-          btn.removeEventListener("click", handler),
-        ),
-      );
-    } catch (e) {
-      console.error("[navbar tabs] failed:", e);
-    }
-
     /* ===== Table scroll affordance (mobile) ===== */
     try {
       const wraps = document.querySelectorAll(".table-wrapper");

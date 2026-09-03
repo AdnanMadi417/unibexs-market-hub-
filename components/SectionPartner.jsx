@@ -6,7 +6,7 @@ export default function SectionPartner() {
       <div className="section-head">
         <div className="section-kicker">Why Unibexs</div>
         <h2 className="heading-lg">
-          Recruit More Students to Malaysia.
+          Recruit More Students to Malaysia.{" "}
           <span className="accent-blue">
             Unibexs Runs Everything Behind Them.
           </span>
