@@ -1,12 +1,23 @@
 "use client";
 
 // A small, reusable tab system: TabsProvider holds which tab is active,
-// TabsNav renders the sticky navbar of tab buttons, and TabPanel wraps each
-// tab's content and shows/hides itself based on that shared state. Navbar
-// and panels live in different places in the page tree (navbar above
+// TabsNav renders the navbar of tab buttons, and TabPanel wraps each tab's
+// content and shows/hides itself based on that shared state. Navbar and
+// panels live in different places in the page tree (navbar above
 // .app-shell, panels deep inside <main>), so plain prop-drilling doesn't
 // reach — Context is what lets them agree on which tab is active without
 // any manual DOM lookups (no more getElementById/hidden toggling).
+//
+// These are separate named exports rather than a single default export
+// with Tabs.Nav/Tabs.Panel attached: a compound-component object doesn't
+// survive Next's server/client boundary when a Server Component (app/page.js)
+// imports it and reaches for a property on it (Tabs.Nav) — the property is
+// gone by the time it crosses. Named exports don't have that problem. The
+// alternative (making page.js itself a client component so the boundary
+// issue never comes up) pulls every section — including the 236KB flag
+// sprite — into the client JS bundle instead of staying static server-
+// rendered HTML, nearly doubling the page's JS payload for a cosmetic
+// import-style win, so it's not worth it here.
 import { createContext, useContext, useEffect, useState } from "react";
 
 const TabsContext = createContext(null);

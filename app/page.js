@@ -28,18 +28,19 @@ export default function Home() {
       <TabsNav tabs={TABS} />
       <div className="app-shell">
         <div className="content">
-          <HeaderHero />
           <main>
             {/* Statistics — every chart/table section. */}
             <TabPanel id="statistics">
+              <HeaderHero />
               <SectionOverview />
               <SectionCountries />
               <SectionRegions />
               <SectionTrends />
-              <SectionAllCountries />
             </TabPanel>
             {/* Market Intel — per-country strategic profiles + why-Unibexs. */}
             <TabPanel id="market-intel">
+              <SectionAllCountries />
+              <SectionAllCountries />
               <SectionSources />
               <SectionMarket />
               <SectionPartner />
