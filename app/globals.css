@@ -80,18 +80,18 @@ h1,h2,h3,h4{margin:0;font-weight:500;line-height:1.15;}
 /* Top navbar: just the two main tabs. Only two items, so unlike the old
    multi-link sidebar this needs no collapse/accordion at any screen size —
    it just wraps if the window is narrow. Scrolls away with the page (not
-   sticky) — .top-navbar itself spans full width (background/border
-   edge-to-edge); .navbar-inner mirrors .content's max-width/padding so the
-   tabs line up with the page's text column instead of sitting flush at
-   the edge. */
+   sticky) — .top-navbar itself spans full width (background edge-to-edge);
+   .navbar-inner mirrors .content's max-width/padding so the tabs — and the
+   border-bottom beneath them — line up with the page's text column instead
+   of sitting flush at the edge. */
 .top-navbar{
-  border-bottom:1px solid var(--border-gray);
   background:var(--white);
 }
 .navbar-inner{
   display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;
   width:100%;max-width:1000px;margin:0 auto;
   padding:14px 56px;
+  border-bottom:1px solid var(--border-gray);
 }
 .navbar-tabs{display:flex;gap:4px;}
 .navbar-tab{
