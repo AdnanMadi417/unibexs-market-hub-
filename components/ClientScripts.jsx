@@ -627,7 +627,7 @@ export default function ClientScripts() {
       console.error("[table scroll affordance] failed:", e);
     }
 
-    /* ===== Horizontal card slider (Market Intel profile cards) ===== */
+    /* ===== Horizontal card sliders (Market Intel + Data Sources) ===== */
     try {
       const wraps = document.querySelectorAll("[data-slider]");
       const teardown = [];
