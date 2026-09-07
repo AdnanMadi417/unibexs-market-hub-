@@ -1,10 +1,12 @@
-// Video companion to "Why Unibexs" — sits beside it in a two-column layout
-// (see app/page.js). Embeds the same walkthrough video unibexs.com uses
-// elsewhere: "See How Unibexs Simplifies the Business Behind Student
-// Recruitment" (youtube.com/watch?v=xLGXsp3U6dU).
+// "See how it works" video — self-contained (own .section wrapper) so it
+// renders correctly wherever app/page.js places it, e.g. paired with
+// SectionPartner in a .two-col grid, or standalone in either tab. Embeds the
+// same walkthrough video unibexs.com uses elsewhere: "See How Unibexs
+// Simplifies the Business Behind Student Recruitment"
+// (youtube.com/watch?v=xLGXsp3U6dU).
 export default function SectionVideo() {
   return (
-    <div className="section-video-wrap">
+    <section className="section">
       <a
         className="video-eyebrow"
         href="https://www.youtube.com/watch?v=xLGXsp3U6dU"
@@ -25,6 +27,6 @@ export default function SectionVideo() {
           loading="lazy"
         />
       </div>
-    </div>
+    </section>
   );
 }

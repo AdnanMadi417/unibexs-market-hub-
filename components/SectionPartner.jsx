@@ -1,11 +1,10 @@
-// "Why Unibexs" content — partner value proposition, value-list, and CTA.
-// Pairs with SectionVideo in a two-column layout inside the "partner"
-// <section> that app/page.js wraps around both (the .section border/padding
-// has to live on that shared full-width wrapper, not in here, or it'd only
-// span this half of the two-column grid).
+// "Why Unibexs" section — partner value proposition, value-list, and CTA.
+// Self-contained (own .section wrapper) so it renders correctly regardless
+// of where app/page.js places it — e.g. paired with SectionVideo in a
+// .two-col grid, or standalone in either tab.
 export default function SectionPartner() {
   return (
-    <div>
+    <section className="section" id="partner">
       <div className="section-head">
         <div className="section-kicker">Why Unibexs</div>
         <h2 className="heading-lg">
@@ -154,6 +153,6 @@ export default function SectionPartner() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
