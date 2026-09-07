@@ -1,8 +1,11 @@
-// "Why Unibexs" section — partner value proposition and value-list.
-// WHY UNIBEXS / PARTNER (info only, no CTA button)
+// "Why Unibexs" content — partner value proposition, value-list, and CTA.
+// Pairs with SectionVideo in a two-column layout inside the "partner"
+// <section> that app/page.js wraps around both (the .section border/padding
+// has to live on that shared full-width wrapper, not in here, or it'd only
+// span this half of the two-column grid).
 export default function SectionPartner() {
   return (
-    <section className="section" id="partner">
+    <div>
       <div className="section-head">
         <div className="section-kicker">Why Unibexs</div>
         <h2 className="heading-lg">
@@ -105,6 +108,24 @@ export default function SectionPartner() {
           Your students stay yours — protected by the Non-Compete Covenant
         </li>
       </ul>
+      <div className="partner-cta">
+        <a
+          className="btn btn-primary"
+          href="https://app.unibexs.com/auth/register"
+          target="_blank"
+          rel="noopener"
+        >
+          Apply to Become an Advisor
+        </a>
+        <a
+          className="btn btn-outline"
+          href="https://www.unibexs.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit unibexs.com
+        </a>
+      </div>
       <div className="card-tint mt-24">
         <h3 className="heading-sm">2026 Data — Q1 Available</h3>
         <p className="text-body mt-16">
@@ -133,6 +154,6 @@ export default function SectionPartner() {
           </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

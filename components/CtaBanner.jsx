@@ -22,27 +22,37 @@ export default function CtaBanner() {
         3,500+ students and generated eight figures in placement value — start
         with the students you already have.
       </p>
-      <a
-        className="cta-btn"
-        href="https://app.unibexs.com/auth/register"
-        target="_blank"
-        rel="noopener"
-      >
-        Become an Advisor{" "}
-        <svg
-          viewBox="0 0 24 24"
-          width="14"
-          height="14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+      <div className="cta-btn-row">
+        <a
+          className="cta-btn"
+          href="https://app.unibexs.com/auth/register"
+          target="_blank"
+          rel="noopener"
         >
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="12 5 19 12 12 19" />
-        </svg>
-      </a>
+          Become an Advisor{" "}
+          <svg
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a
+          className="cta-btn-secondary"
+          href="https://www.unibexs.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit unibexs.com
+        </a>
+      </div>
     </section>
   );
 }

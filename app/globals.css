@@ -303,6 +303,23 @@ td.growth-down{color:var(--red-2);font-weight:700;}
 .value-list{list-style:none;padding:0;margin:20px 0;display:flex;flex-direction:column;gap:10px;}
 .value-list li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--near-black);}
 .value-icon{flex:0 0 22px;height:22px;width:22px;border-radius:50%;background:var(--blue-200);color:var(--blue);display:flex;align-items:center;justify-content:center;}
+.partner-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;}
+
+.video-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:10px;
+}
+.video-eyebrow:hover{text-decoration:underline;}
+.section-video-wrap{min-width:0;}
+.video-frame{
+  position:relative;width:100%;padding-top:56.25%; /* 16:9 */
+  border-radius:var(--radius-md);overflow:hidden;
+  background:var(--offwhite);border:1px solid var(--border-gray);
+}
+.video-frame iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:none;
+}
 
 /* Data sources — same horizontal slider treatment as Market Intel */
 .source-grid{display:flex;gap:18px;}
@@ -548,9 +565,9 @@ input:focus-visible,
   font-size:15.5px;line-height:1.7;color:rgba(255,255,255,0.82);
   max-width:520px;margin:16px auto 0;
 }
+.cta-btn-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:28px;}
 .cta-btn{
   display:inline-flex;align-items:center;gap:8px;
-  margin-top:28px;
   background:var(--white);color:var(--blue);
   font-size:14.5px;font-weight:700;
   padding:14px 30px;border-radius:var(--radius-pill);
@@ -558,6 +575,15 @@ input:focus-visible,
 }
 .cta-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,0.25);}
 .cta-btn svg{flex-shrink:0;}
+.cta-btn-secondary{
+  display:inline-flex;align-items:center;
+  background:transparent;color:var(--white);
+  border:1.5px solid rgba(255,255,255,0.4);
+  font-size:14.5px;font-weight:700;
+  padding:14px 30px;border-radius:var(--radius-pill);
+  transition:background .15s ease,border-color .15s ease;
+}
+.cta-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.7);}
 @media (max-width:640px){
   .cta-banner{padding:36px 22px;}
   .cta-banner-grid{width:140px;height:140px;}

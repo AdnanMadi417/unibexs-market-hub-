@@ -9,6 +9,7 @@ import SectionTrends from '@/components/SectionTrends';
 import SectionAllCountries from '@/components/SectionAllCountries';
 import SectionSources from '@/components/SectionSources';
 import SectionMarket from '@/components/SectionMarket';
+import SectionVideo from '@/components/SectionVideo';
 import SectionPartner from '@/components/SectionPartner';
 import CtaBanner from '@/components/CtaBanner';
 import Footer from '@/components/Footer';
@@ -43,7 +44,12 @@ export default function Home() {
               <SectionAllCountries />
               <SectionSources />
               <SectionMarket />
-              <SectionPartner />
+              <section className="section" id="partner">
+                <div className="two-col">
+                  <SectionVideo />
+                  <SectionPartner />
+                </div>
+              </section>
             </TabPanel>
             <CtaBanner />
           </main>
