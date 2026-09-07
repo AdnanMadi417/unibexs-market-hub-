@@ -37,19 +37,16 @@ export default function Home() {
               <SectionCountries />
               <SectionRegions />
               <SectionTrends />
-            </TabPanel>
+              <SectionPartner />
+              <SectionMarket />
+              <SectionSources />              
+              </TabPanel>
             {/* Market Intel — per-country strategic profiles + why-Unibexs. */}
             <TabPanel id="market-intel">
               <SectionAllCountries />
               <SectionAllCountries />
-              <SectionSources />
               <SectionMarket />
-              <section className="section" id="partner">
-                <div className="two-col">
-                  <SectionVideo />
-                  <SectionPartner />
-                </div>
-              </section>
+              <SectionVideo />
             </TabPanel>
             <CtaBanner />
           </main>
