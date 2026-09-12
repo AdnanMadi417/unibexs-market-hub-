@@ -1,4 +1,6 @@
 // "By Country" section — ranked country tables/charts.
+import TabLink from "./TabLink";
+
 export default function SectionCountries() {
   return (
     <section className="section" id="countries">
@@ -84,9 +86,9 @@ export default function SectionCountries() {
             deeper analysis.
           </p>
         </div>
-        <a className="text-link" href="#all-countries">
+        <TabLink tab="market-intel" href="#all-countries" className="text-link">
           View all countries →
-        </a>
+        </TabLink>
       </div>
     </section>
   );

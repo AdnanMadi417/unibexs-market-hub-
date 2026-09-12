@@ -44,7 +44,6 @@ export default function Home() {
             {/* Market Intel — per-country strategic profiles + why-Unibexs. */}
             <TabPanel id="market-intel">
               <SectionAllCountries />
-              <SectionAllCountries />
               <SectionMarket />
               <SectionVideo />
             </TabPanel>

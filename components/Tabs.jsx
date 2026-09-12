@@ -44,7 +44,11 @@ export function TabsProvider({ defaultTab, children }) {
   );
 }
 
-function useTabs() {
+// Exported so components outside this file (e.g. TabLink) can read/change
+// the active tab too — anything that links to content living in a
+// *different* tab than the one it's rendered in needs this, not just the
+// nav buttons.
+export function useTabs() {
   const ctx = useContext(TabsContext);
   if (!ctx) throw new Error("Tabs* components must be used inside a TabsProvider");
   return ctx;

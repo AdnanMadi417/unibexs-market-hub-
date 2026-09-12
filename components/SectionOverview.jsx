@@ -1,4 +1,6 @@
 // "Overview" section — growth trajectory charts (applications, top countries, region mix).
+import TabLink from "./TabLink";
+
 export default function SectionOverview() {
   return (
     <section className="section" id="overview">
@@ -47,9 +49,9 @@ export default function SectionOverview() {
             17% increase. Degree +25%. South Asia +41%. Central Asia +44%. China
             31,866 (-4% moderation).
           </p>
-          <a className="src" href="#sources">
+          <TabLink tab="statistics" href="#sources" className="src">
             EMGS 2025 Annual Highlights (Official PDF) →
-          </a>
+          </TabLink>
         </div>
         <div className="overview-card">
           <div className="overview-icon">
